@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="demo1" />
+        <module name="demo2" />
+        <module name="Minicat" />
+        <module name="myMinicat" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="demo1" target="1.7" />
+      <module name="demo2" target="1.7" />
+      <module name="Minicat" target="8" />
+      <module name="Minicat (1) (com.fy)" target="1.8" />
+      <module name="myMinicat" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

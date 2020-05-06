@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Minicat:war">
+    <output-path>$PROJECT_DIR$/../Minicat/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Minicat</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="Minicat-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Minicat:war exploded" />
+    </root>
+  </artifact>
+</component>
