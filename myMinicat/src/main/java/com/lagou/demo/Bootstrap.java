@@ -27,7 +27,7 @@ import java.util.concurrent.*;
 public class Bootstrap {
     private int port = 8080;
 
-    private Map<String, Class> servletMap = new HashMap<>();
+    private Map<String, HttpServlet> servletMap = new HashMap<>();
     private Host host;
 
 
@@ -142,9 +142,13 @@ public class Bootstrap {
                     MyClassloader myClassloader = new MyClassloader(path);
                     Class aClass = myClassloader.findClass(servletClassValue);
                     //加载demo1和demo2项目的servlet类
-                    servletMap.put(urlPatternValue, aClass);
+                    servletMap.put(urlPatternValue, (HttpServlet)aClass.newInstance());
                 }
             } catch (DocumentException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
                 e.printStackTrace();
             }
         }

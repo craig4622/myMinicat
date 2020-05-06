@@ -16,9 +16,9 @@ public class RequestProcessor extends Thread {
 
     private Socket socket;
 
-    private Map<String, Class> servletMap;
+    private Map<String, HttpServlet> servletMap;
 
-    public RequestProcessor(Socket socket, Map<String, Class> servletMap) {
+    public RequestProcessor(Socket socket, Map<String, HttpServlet> servletMap) {
         this.socket = socket;
         this.servletMap = servletMap;
     }
@@ -35,17 +35,8 @@ public class RequestProcessor extends Thread {
                 response.output(request.getUrl());
             } else {
                 //加载动态资源,反射获取对应的类执行对应的方法
-                Class className = servletMap.get(request.getUrl());
-                Object obj = className.newInstance();
-                Method[] methods = className.getSuperclass().getMethods();
-                Method method = null;
-                for (int i = 0; i < methods.length; i++) {
-                    if (methods[i].getName().contains("service")) {
-                        method = methods[i];
-                        break;
-                    }
-                }
-                method.invoke(obj, request, response);
+                HttpServlet httpServlet = servletMap.get(request.getUrl());
+                httpServlet.service(request,response);
             }
             socket.close();
         } catch (IOException e) {
